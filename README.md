@@ -9,9 +9,14 @@ Suggested-mappings
 ------------------
 
 ```viml
-nnoremap <silent><c-f> :ArrowNext<CR>
-nnoremap <silent><c-p> :ArrowPrevious<CR>
-nnoremap <silent><c-m> :ArrowModified<CR>
-nnoremap <silent><c-e> :ArrowRewind<CR>
-nnoremap <silent><c-y> :ArrowLast<CR>
+nnoremap <silent>]b :ArrowNext<CR>
+nnoremap <silent>[b :ArrowPrevious<CR>
+nnoremap <silent>]B :ArrowSplitNext<CR>
+nnoremap <silent>[B :ArrowSplitPrevious<CR>
+nnoremap <silent>]q :ArrowModified<CR>
+nnoremap <silent>]Q :ArrowSplitModified<CR>
+nnoremap <silent>]r :ArrowRewind<CR>
+nnoremap <silent>]R :ArrowSplitRewind<CR>
+nnoremap <silent>]l :ArrowLast<CR>
+nnoremap <silent>]L :ArrowSplitLast<CR>
 ```
