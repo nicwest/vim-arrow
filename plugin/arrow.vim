@@ -17,4 +17,3 @@ command ArrowLast :call arrow#blast()
 command ArrowSplitLast :call arrow#bslast()
 command ArrowModified :call arrow#bmodified()
 command ArrowSplitModified :call arrow#sbmodified()
-

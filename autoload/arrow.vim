@@ -29,8 +29,8 @@ function! s:next_buffers(buffers) abort
     let bindex = 0
   endif
   let next = a:buffers[bindex : bindex+num-1]
-  if len(next) < num && len(a:buffers) > 1
-    let next += a:buffers[0 : min([num - len(next) - 1, bindex])]
+  if len(next) < num && len(a:buffers) > len(next)
+    let next += a:buffers[0 : max([min([min([num, len(a:buffers)]) - len(next) -1, bindex]), 0])]
   endif
   return next
 endfunction
@@ -44,51 +44,51 @@ function! s:direction_string(buffers, direction_marker) abort
 endfunction
 
 function! arrow#bnext() abort
-  silent! exe ':bnext'
+  silent! bnext
   exe s:direction_string(s:next_buffers(s:listed()), '->')
 endfunction
 
 function! arrow#sbnext() abort
-  silent! exe ':sbnext'
+  silent! vert sbnext
   exe s:direction_string(s:next_buffers(s:listed()), '->')
 endfunction
 
 function! arrow#bNext() abort
-  silent! exe ':bNext'
+  silent! bNext
   exe s:direction_string(s:previous_buffers(s:listed()), '=>')
 endfunction
 
 function! arrow#sbNext() abort
-  silent! exe ':sbNext'
+  silent! vert sbNext
   exe s:direction_string(s:previous_buffers(s:listed()), '=>')
 endfunction
 
 function! arrow#brewind() abort
-  silent! exe ':brewind'
+  silent! brewind
   exe s:direction_string(s:next_buffers(s:listed()), '->')
 endfunction
 
 function! arrow#sbrewind() abort
-  silent! exe ':sbrewind'
+  silent! vert sbrewind
   exe s:direction_string(s:next_buffers(s:listed()), '->')
 endfunction
 
 function! arrow#blast() abort
-  silent! exe ':blast'
+  silent! blast
   exe s:direction_string(s:previous_buffers(s:listed()), '=>')
 endfunction
 
 function! arrow#sblast() abort
-  silent! exe ':sblast'
+  silent! vert sblast
   exe s:direction_string(s:previous_buffers(s:listed()), '=>')
 endfunction
 
 function! arrow#bmodified() abort
-  silent! exe ':bmodified'
+  silent! bmodified
   exe s:direction_string(s:next_buffers(s:modified()), '+>')
 endfunction
 
 function! arrow#sbmodified() abort
-  silent! exe ':sbmodified'
+  silent! vert sbmodified
   exe s:direction_string(s:next_buffers(s:modified()), '+>')
 endfunction
